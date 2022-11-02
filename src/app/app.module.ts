@@ -26,8 +26,11 @@ import { CrearVentaComponent } from './components/venta/crear-venta/crear-venta.
 import { ActualizarVentaComponent } from './components/venta/actualizar-venta/actualizar-venta.component';
 import { EliminarVentaComponent } from './components/venta/eliminar-venta/eliminar-venta.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +61,9 @@ import { HttpClientModule } from '@angular/common/http';
     MenubarModule,
     FormsModule,
     HttpClientModule,
+    TableModule,
+    ButtonModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

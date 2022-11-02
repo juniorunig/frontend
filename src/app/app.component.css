@@ -1,3 +1,6 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 main {
   display: grid;
   height: 99vh;
@@ -12,10 +15,17 @@ main {
 
 header {
   grid-area: header;
+  background-color: #8dc3d8;
+  margin-top: 0.1em;
+  margin-left: 0.5em;
+  margin-right: 1.5em;
 }
 
 section {
   grid-area: section;
+  margin-top: 1em;
+  margin-left: 0.2em;
+  margin-right: 1em;
 }
 
 footer {

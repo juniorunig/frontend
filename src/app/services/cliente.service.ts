@@ -9,7 +9,7 @@ import { ClienteI } from '../models/clientes';
 export class ClienteService {
   api_uri_nodejs = 'http://localhost:3001';
   api_uri_django = 'http://localhost:4000';
-  base_path = `${this.api_uri_nodejs}/clientes/`;
+  base_path = `${this.api_uri_nodejs}/clientes`;
   constructor(private http: HttpClient) {}
 
   getAllCliente(): Observable<{ cliente: ClienteI[] }> {
