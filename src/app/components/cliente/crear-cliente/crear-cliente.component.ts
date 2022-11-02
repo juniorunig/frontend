@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ClienteI } from 'src/app/models/clientes';
+import { Message, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -21,6 +22,7 @@ export class CrearClienteComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private clienteService: ClienteService,
+    private messageService: MessageService,
 
     private router: Router
   ) {}
@@ -34,6 +36,14 @@ export class CrearClienteComponent implements OnInit {
       () => {
         // console.log('Se ha creado correctamente');
 
+        setTimeout(() => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Notificación',
+            detail: 'Cliente Creado',
+            life: 5000,
+          });
+        }, 0);
         this.router.navigateByUrl('clientes');
       },
       (err) => {
