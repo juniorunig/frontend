@@ -9,15 +9,15 @@ import { ClienteI } from '../models/clientes';
 export class ClienteService {
   api_uri_nodejs = 'http://localhost:3001';
   api_uri_django = 'http://localhost:4000';
-  base_path = `${this.api_uri_nodejs}/clientes`;
+  base_path = `${this.api_uri_nodejs}/clientes/`;
   constructor(private http: HttpClient) {}
 
   getAllCliente(): Observable<{ cliente: ClienteI[] }> {
     return this.http.get<{ cliente: ClienteI[] }>(this.base_path);
   }
 
-  getOneCliente(): Observable<{ cliente: ClienteI[] }> {
-    return this.http.get<{ cliente: ClienteI[] }>(this.base_path);
+  getOneCliente(id: number): Observable<{ cliente: ClienteI[] }> {
+    return this.http.get<{ cliente: ClienteI[] }>(`${this.base_path}${id}`);
   }
 
   createCliente(data: any): Observable<ClienteI> {
@@ -25,10 +25,11 @@ export class ClienteService {
   }
 
   updateCliente(id: number, data: any): Observable<ClienteI> {
-    return this.http.put<ClienteI>(`${this.base_path}/${id}`, data);
+    console.log(id, data);
+    return this.http.put<ClienteI>(`${this.base_path}${id}`, data);
   }
 
   deleteCliente(id: number): Observable<ClienteI> {
-    return this.http.delete<ClienteI>(`${this.base_path}/${id}`);
+    return this.http.delete<ClienteI>(`${this.base_path}${id}`);
   }
 }
