@@ -14,19 +14,17 @@ export class TipoProductoService {
   // base_path = 'localhost:3001/tipoProductos/';
   constructor(private http: HttpClient) {}
 
-  getAlltipoProducto(): Observable<{ tipoProducto: tipoProductoI[] }> {
-    return this.http.get<{ tipoProducto: tipoProductoI[] }>(this.base_path);
+  getAlltipoProducto(): Observable<{ tipoProductos: tipoProductoI[] }> {
+    return this.http.get<{ tipoProductos: tipoProductoI[] }>(this.base_path);
   }
   getAlltipoProducto2() {
-    return this.http.get<any>(this.base_path).subscribe((data) => {
-      return <ProductoI[]>data;
-    });
+    return this.http.get<tipoProductoI[]>(this.base_path);
   }
 
   getOnetipoProducto(
     id: number
-  ): Observable<{ tipoProducto: tipoProductoI[] }> {
-    return this.http.get<{ tipoProducto: tipoProductoI[] }>(
+  ): Observable<{ tipoproducto: tipoProductoI[] }> {
+    return this.http.get<{ tipoproducto: tipoProductoI[] }>(
       `${this.base_path}${id}`
     );
   }

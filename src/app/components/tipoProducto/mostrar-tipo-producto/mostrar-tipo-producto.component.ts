@@ -23,9 +23,10 @@ export class MostrarTipoProductoComponent implements OnInit {
   }
 
   mostrarTipoProducto() {
+    // let tipo: any;
     this.tipoproductoService.getAlltipoProducto().subscribe((data) => {
-      this.tipoProductos = data.tipoProducto;
-      // this.tipoProductos = data;
+      this.tipoProductos = data.tipoProductos;
+      // console.log(this.clientes)
     });
   }
 

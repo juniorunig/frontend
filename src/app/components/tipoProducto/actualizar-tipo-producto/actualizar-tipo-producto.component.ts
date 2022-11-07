@@ -14,7 +14,9 @@ export class ActualizarTipoProductoComponent implements OnInit {
   public id: number = 0;
   public form: FormGroup = this.formBuilder.group({
     id: [''],
-    nombreTipoProducto: ['', [Validators.required]],
+    nombre: ['', [Validators.required]],
+    // createdAt: [''],
+    // updateAt: [''],
   });
 
   constructor(
@@ -34,7 +36,7 @@ export class ActualizarTipoProductoComponent implements OnInit {
   gettipoProducto(id: number) {
     this.tipoProductoservice.getOnetipoProducto(id).subscribe({
       next: (data) => {
-        this.form.setValue(data.tipoProducto);
+        this.form.setValue(data.tipoproducto);
         // console.log(data.tipoProducto)
       },
     });
