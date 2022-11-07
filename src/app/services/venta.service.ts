@@ -7,7 +7,7 @@ import { VentaI } from '../models/venta';
   providedIn: 'root',
 })
 export class VentaService {
-  api_uri_nodejs = 'http://localhost:3001';
+  api_uri_nodejs = 'http://localhost:3008';
   api_uri_django = 'http://localhost:4000';
   base_path = `${this.api_uri_nodejs}/ventas/`;
   constructor(private http: HttpClient) {}
@@ -16,8 +16,8 @@ export class VentaService {
     return this.http.get<{ venta: VentaI[] }>(this.base_path);
   }
 
-  getOneventa(): Observable<{ venta: VentaI[] }> {
-    return this.http.get<{ venta: VentaI[] }>(this.base_path);
+  getOneventa(id: number): Observable<VentaI> {
+    return this.http.get<VentaI>(this.base_path + `${id}`);
   }
 
   createventa(data: any): Observable<VentaI> {
@@ -25,10 +25,10 @@ export class VentaService {
   }
 
   updateventa(id: number, data: any): Observable<VentaI> {
-    return this.http.put<VentaI>(`${this.base_path}/${id}`, data);
+    return this.http.put<VentaI>(`${this.base_path}${id}`, data);
   }
 
   deleteventa(id: number): Observable<VentaI> {
-    return this.http.delete<VentaI>(`${this.base_path}/${id}`);
+    return this.http.delete<VentaI>(`${this.base_path}${id}`);
   }
 }

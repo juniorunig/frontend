@@ -32,6 +32,7 @@ export class ActualizarClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+
     // let idCliente = this.route.snapshot.paramMap.get("id");
     this.getCliente(this.id);
   }

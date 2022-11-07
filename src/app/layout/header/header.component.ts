@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Tipo Productos',
         icon: 'pi pi-fw pi-qrcode',
-        routerLink: '/tipoproductos',
+        routerLink: '/tipoProductos',
       },
       {
         label: 'Productos',

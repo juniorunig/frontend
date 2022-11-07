@@ -1,1 +1,63 @@
-<p>mostrar-producto works!</p>
+<div class="flex align-items-center justify-content-end bg-cyan-100">
+  <a
+    pButton
+    pRipple
+    label="Crear productos"
+    icon="pi pi-user-plus"
+    class="bg-cyan-600"
+    [routerLink]="['/addproductos']"
+  ></a>
+</div>
+<div>
+  <p-toast></p-toast>
+</div>
+<p-table [value]="productos">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>id</th>
+      <th>nombre</th>
+      <th>marca</th>
+      <th>precio</th>
+      <th>stockMin</th>
+      <th>cantidad</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-productos>
+    <tr>
+      <td>{{ productos.id }}</td>
+      <td>{{ productos.nombre }}</td>
+      <td>{{ productos.marca }}</td>
+      <td>{{ productos.precio }}</td>
+      <td>{{ productos.stockMin }}</td>
+      <td>{{ productos.cantidad }}</td>
+
+      <td>
+        <button
+          pButton
+          pRipple
+          icon="pi pi-print"
+          class="bg-cyan-600 mr-1"
+          (click)="imprimir(productos.id)"
+        ></button>
+
+        <a
+          pButton
+          pRipple
+          icon="pi pi-sync"
+          class="bg-cyan-600 mr-1"
+          [routerLink]="['/productos/edit', productos.id]"
+        >
+        </a>
+
+        <button
+          type="button"
+          pButton
+          pRipple
+          icon="pi pi-eraser"
+          class="bg-cyan-600 mr-1"
+          (click)="eliminar(productos.id)"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

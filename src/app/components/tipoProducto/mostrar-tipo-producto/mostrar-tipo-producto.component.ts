@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { tipoProductoI } from 'src/app/models/tipoProducto';
 import { TipoProductoService } from 'src/app/services/tipo-producto.service';
+import { Message, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-mostrar-tipo-producto',
@@ -10,10 +11,11 @@ import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 })
 export class MostrarTipoProductoComponent implements OnInit {
   public tipoProductos: tipoProductoI[] = [];
-  public displayedColumns: string[] = ['id', 'nombre'];
+
   constructor(
     private tipoproductoService: TipoProductoService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -21,11 +23,30 @@ export class MostrarTipoProductoComponent implements OnInit {
   }
 
   mostrarTipoProducto() {
-    this.tipoproductoService.getAlltipoProducto().subscribe({
-      next: (data) => {
-        this.tipoProductos = data.tipoProducto;
-        console.log(this.tipoProductos);
-      },
+    this.tipoproductoService.getAlltipoProducto().subscribe((data) => {
+      this.tipoProductos = data.tipoProducto;
+      // this.tipoProductos = data;
     });
   }
+
+  eliminar(id: number): void {
+    this.router.navigateByUrl('/tipoProductos');
+    this.tipoproductoService.deletetipoProducto(id).subscribe(
+      () => {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Notificación',
+          detail: 'tipoProducto Eliminado',
+          life: 5000,
+        });
+        this.mostrarTipoProducto();
+      },
+      (err) => {
+        console.log('error');
+        this.router.navigateByUrl('/tipoProductos');
+      }
+    );
+  }
+
+  imprimir(id: number) {}
 }
