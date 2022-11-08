@@ -34,11 +34,9 @@ export class ActualizarTipoProductoComponent implements OnInit {
   }
 
   gettipoProducto(id: number) {
-    this.tipoProductoservice.getOnetipoProducto(id).subscribe({
-      next: (data) => {
-        this.form.setValue(data.tipoproducto);
-        // console.log(data.tipoProducto)
-      },
+    this.tipoProductoservice.getOnetipoProducto(id).subscribe((data) => {
+      this.form.setValue(data.tipoproducto);
+      // console.log(data.tipoProducto)
     });
   }
 

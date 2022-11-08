@@ -13,12 +13,12 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class ActualizarProductoComponent implements OnInit {
   public id: number = 0;
   public form: FormGroup = this.formBuilder.group({
+    cantidad: ['', [Validators.required]],
     id: [''],
     nombre: ['', [Validators.required]],
     marca: ['', [Validators.required]],
     precio: ['', [Validators.required]],
     stockMin: ['', [Validators.required]],
-    cantidad: ['', [Validators.required]],
   });
 
   constructor(
@@ -37,9 +37,12 @@ export class ActualizarProductoComponent implements OnInit {
   }
 
   getproducto(id: number) {
-    this.productoService
-      .getOneproducto(id)
-      .subscribe((data) => this.form.setValue(data));
+    this.productoService.getOneproducto(id).subscribe({
+      next: (data) => {
+        this.form.setValue(data);
+        console.log(data);
+      },
+    });
   }
 
   onSubmit(): void {

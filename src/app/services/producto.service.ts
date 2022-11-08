@@ -16,8 +16,8 @@ export class ProductoService {
     return this.http.get<{ producto: ProductoI[] }>(this.base_path);
   }
 
-  getOneproducto(id: number): Observable<ProductoI> {
-    return this.http.get<ProductoI>(this.base_path + `${id}`);
+  getOneproducto(id: number): Observable<{ producto: ProductoI }> {
+    return this.http.get<{ producto: ProductoI }>(`${this.base_path}${id}`);
   }
 
   createproducto(data: any): Observable<ProductoI> {
